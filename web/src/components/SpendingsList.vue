@@ -1,5 +1,5 @@
 <template>
-  
+  <p>SpendingList works!</p>
 </template>
 
 <script>
