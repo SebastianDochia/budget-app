@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="add-form">
     <h2>New Expense</h2>
     <form @submit.prevent="onSubmit">
       <div>
@@ -28,7 +28,21 @@ export default {
   name: "add-form",
   methods: {
     onSubmit() {
-      console.log(this.name);
+      if(!this.name && !this.value && !this.category && !this.date) {
+       alert("All fields are required.");
+       return;
+      }
+      if(Number.isInteger(this.value)) {
+        alert("Value should be a number.");
+        return;
+      }
+
+      this.$emit("expense-added", { name: this.name, value: this.value, category: this.category, date: this.date });
+
+      this.name = "";
+      this.value = "";
+      this.category = "";
+      this.date = "";
     },
   },
   data() {
@@ -42,5 +56,32 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.add-form form > div {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+form > button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-top: 20px;
+  align-self: flex-end;
+  border: none;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  background: blueviolet;
+  color: #ffffff;
+  font-size: 1rem;
+  text-align: center;
+  transition: background 250ms ease-in-out;
+}
+button:hover {
+  background: #0053ba;
+  cursor: pointer;
+}
 </style>

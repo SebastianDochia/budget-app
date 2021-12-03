@@ -2,7 +2,7 @@
   <div class="container">
     <div class="top-line">
       <graph></graph>
-      <add-form></add-form>
+      <add-form @expense-added="addExpense"></add-form>
     </div>
     <spending-list></spending-list>
   </div>
@@ -22,26 +22,26 @@ export default {
     SpendingList,
   },
   methods: {
-    addExpense() {},
+    addExpense(expense) {
+      console.log(expense);
+      axios
+        .post("http://localhost:8070/api/categories", {
+          body: expense,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
+    },
   },
-  // test POST
-  //   mounted() {
-  //     axios
-  //       .post("http://localhost:8070/api/categories", {
-  //         body: { name: "test" },
-  //       })
-  //       .then((response) => {
-  //         console.log(response);
-  //       })
-  //       .catch((e) => {
-  //         this.errors.push(e);
-  //       });
-  //   },
 };
 </script>
 
 <style scoped>
 .container {
+  box-sizing: border-box;
   max-width: 60vw;
   height: 40vh;
   margin: auto;
@@ -52,10 +52,10 @@ export default {
   padding: 10px;
 }
 .top-line {
-    display: flex;
-    padding: 10px;
+  display: flex;
+  padding: 10px;
 }
 .top-line > * {
-    width: 100%
+  width: 100%;
 }
 </style>
