@@ -4,7 +4,7 @@
       <graph></graph>
       <add-form @expense-added="addExpense"></add-form>
     </div>
-    <spending-list></spending-list>
+    <spending-list :spendings="expenses"></spending-list>
   </div>
 </template>
 
@@ -21,11 +21,20 @@ export default {
     AddForm,
     SpendingList,
   },
+  data() {
+    return {
+      expenses: [],
+    };
+  },
   methods: {
+    getExpenses() {
+      axios.get("http://localhost:8070/api/expenses").then((response) => {
+        this.expenses = response.data;
+      });
+    },
     addExpense(expense) {
-      console.log(expense);
       axios
-        .post("http://localhost:8070/api/categories", {
+        .post("http://localhost:8070/api/expenses", {
           body: expense,
         })
         .then((response) => {
@@ -36,6 +45,9 @@ export default {
         });
     },
   },
+  created() {
+    this.getExpenses();
+  },
 };
 </script>
 
@@ -43,7 +55,7 @@ export default {
 .container {
   box-sizing: border-box;
   max-width: 60vw;
-  height: 40vh;
+  height: 80vh;
   margin: auto;
   margin-top: 40px;
   filter: drop-shadow(0 0 0.1rem black);
@@ -54,6 +66,7 @@ export default {
 .top-line {
   display: flex;
   padding: 10px;
+  margin-bottom: 30px;
 }
 .top-line > * {
   width: 100%;
