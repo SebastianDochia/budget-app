@@ -39,6 +39,7 @@ export default {
         })
         .then((response) => {
           console.log(response);
+          this.expenses.push(expense);
         })
         .catch((e) => {
           this.errors.push(e);
