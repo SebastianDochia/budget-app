@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.post('/expenses', addExpense);
 router.get('/expenses', getAllExpenses);
-router.get('/expense/:id', getExpense);
-router.put('/expense/:id', updateExpense);
-router.delete('/expense/:id', deleteExpense);
+router.get('/expenses/:id', getExpense);
+router.put('/expenses/:id', updateExpense);
+router.delete('/expenses/:id', deleteExpense);
 
 
 module.exports = {
