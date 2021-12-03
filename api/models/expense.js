@@ -7,3 +7,5 @@ class Expense {
         this.category = category;
     }
 }
+
+module.exports = Expense;

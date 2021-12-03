@@ -25,11 +25,10 @@ const getAllExpenses = async (req, res, next) => {
             data.forEach(doc => {
                 const expense = new Expense(
                     doc.id,
-                    doc.data().name,
-                    doc.data().vale,
-                    doc.data().date,
-                    doc.data().class,
-                    doc.data().category,
+                    doc.data().body.name,
+                    doc.data().body.value,
+                    doc.data().body.date,
+                    doc.data().body.category,
                 );
                 expensesArray.push(expense);
             });

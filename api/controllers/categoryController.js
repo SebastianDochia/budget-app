@@ -26,7 +26,7 @@ const getAllCategories = async (req, res, next) => {
             data.forEach(doc => {
                 const category = new Category(
                     doc.id,
-                    doc.data().name,
+                    doc.data().body.name,
                 );
                 categoriesArray.push(category);
             });
