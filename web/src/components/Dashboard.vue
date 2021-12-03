@@ -4,7 +4,10 @@
       <graph></graph>
       <add-form @expense-added="addExpense"></add-form>
     </div>
-    <spending-list :spendings="expenses"></spending-list>
+    <spending-list
+      @expense-deleted="deleteExpense"
+      :spendings="expenses"
+    ></spending-list>
   </div>
 </template>
 
@@ -33,13 +36,27 @@ export default {
       });
     },
     addExpense(expense) {
+      this.expenses.push(expense);
+
       axios
         .post("http://localhost:8070/api/expenses", {
           body: expense,
         })
         .then((response) => {
           console.log(response);
-          this.expenses.push(expense);
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
+    },
+    deleteExpense(id) {
+      const itemIndex = this.expenses.findIndex(item => item.id === id);
+      this.expenses.splice(itemIndex, 1);
+      
+      axios
+        .delete(`http://localhost:8070/api/expenses/${id}`)
+        .then((response) => {
+          console.log(response);
         })
         .catch((e) => {
           this.errors.push(e);
