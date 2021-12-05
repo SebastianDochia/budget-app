@@ -2,7 +2,7 @@
   <div class="container">
     <div class="top-line">
       <graph></graph>
-      <add-form @expense-added="addExpense"></add-form>
+      <add-form @expense-added="addExpense" :arrayOfCategories="categories"></add-form>
     </div>
     <spending-list
       @expense-deleted="deleteExpense"
@@ -27,9 +27,15 @@ export default {
   data() {
     return {
       expenses: [],
+      categories: [],
     };
   },
   methods: {
+    getCategories() {
+      axios.get("http://localhost:8070/api/categories").then((response) => {
+        this.categories = response.data;
+      });
+    },
     getExpenses() {
       axios.get("http://localhost:8070/api/expenses").then((response) => {
         this.expenses = response.data;
@@ -65,6 +71,7 @@ export default {
   },
   created() {
     this.getExpenses();
+    this.getCategories()
   },
 };
 </script>

@@ -11,12 +11,18 @@
         <input type="text" id="value" v-model.lazy="value" />
       </div>
       <div>
-        <label for="category">Category:</label>
-        <input type="text" id="category" v-model.lazy="category" />
-      </div>
-      <div>
         <label for="date">Date:</label>
         <input type="date" id="date" v-model.lazy="date" />
+      </div>
+      <div class="category-field">
+        <p class="add-category-btn">(+)</p>
+        <label for="category">Category:</label>
+        <dropdown
+          id="category"
+          :options="arrayOfCategories"
+          :selected="object"
+          v-on:updateOption="methodToRunOnSelect"
+        ></dropdown>
       </div>
       <button>Submit</button>
     </form>
@@ -24,25 +30,39 @@
 </template>
 
 <script>
+import dropdown from "vue-dropdowns";
+
 export default {
   name: "add-form",
+  components: {
+    dropdown: dropdown,
+  },
   methods: {
+    methodToRunOnSelect(payload) {
+      this.object = payload;
+    },
     onSubmit() {
-      if(!this.name && !this.value && !this.category && !this.date) {
-       alert("All fields are required.");
-       return;
+      if (!this.name || !this.value || this.object.name == "Category" || !this.date) {
+        alert("All fields are required.");
+        return;
       }
-      if(Number.isInteger(this.value)) {
+      if (Number.isInteger(this.value)) {
         alert("Value should be a number.");
         return;
       }
 
-      this.$emit("expense-added", { name: this.name, value: this.value, category: this.category, date: this.date });
+      this.$emit("expense-added", {
+        id: Math.floor(Math.random() * 1000000001).toString(),
+        name: this.name,
+        value: this.value,
+        category: this.object.name,
+        date: this.date,
+      });
 
       this.name = "";
       this.value = "";
-      this.category = "";
       this.date = "";
+      this.object.name = "Category";
     },
   },
   data() {
@@ -51,8 +71,14 @@ export default {
       value: "",
       category: "",
       date: "",
+      object: {
+        name: "Category",
+      },
     };
   },
+  props: {
+    arrayOfCategories: {type: Array, required: true},
+  }
 };
 </script>
 
@@ -83,5 +109,13 @@ form > button {
 button:hover {
   background: #0053ba;
   cursor: pointer;
+}
+.category-field {
+  display: flex;
+  align-items: center;
+}
+.add-category-btn {
+  cursor: pointer;
+  color: blueviolet;
 }
 </style>
