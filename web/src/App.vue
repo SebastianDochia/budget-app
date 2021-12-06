@@ -17,6 +17,17 @@ export default {
 </script>
 
 <style>
+.container {
+  box-sizing: border-box;
+  max-width: 60vw;
+  height: 80vh;
+  margin: auto;
+  margin-top: 40px;
+  filter: drop-shadow(0 0 0.1rem black);
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -15,13 +15,13 @@
         <input type="date" id="date" v-model.lazy="date" />
       </div>
       <div class="category-field">
-        <p class="add-category-btn">(+)</p>
+        <p class="add-category-btn" v-on:click="onAddCategory">(+)</p>
         <label for="category">Category:</label>
         <dropdown
           id="category"
           :options="arrayOfCategories"
           :selected="object"
-          v-on:updateOption="methodToRunOnSelect"
+          :updateOption="methodToRunOnSelect"
         ></dropdown>
       </div>
       <button>Submit</button>
@@ -40,6 +40,9 @@ export default {
   methods: {
     methodToRunOnSelect(payload) {
       this.object = payload;
+    },
+    onAddCategory() {
+      this.$emit("adding-category");
     },
     onSubmit() {
       if (!this.name || !this.value || this.object.name == "Category" || !this.date) {

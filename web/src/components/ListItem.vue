@@ -1,6 +1,6 @@
 <template>
   <div class="entry-line">
-    <p>{{ this.value }}</p>
+    <p>{{ "$" + this.value }}</p>
     <p>{{ this.name }}</p>
     <p>{{ this.date }}</p>
     <p>{{ this.category }}</p>
@@ -35,5 +35,6 @@ export default {
 .entry-line .red-x {
   color: red;
   cursor: pointer;
+  padding-right: 20px;
 }
 </style>
