@@ -1,6 +1,10 @@
 <template>
   <div class='navbar'>
     <h2>{{ title }}</h2>
+    <span class="links">
+      <router-link to="/">Dashboard</router-link>
+      <router-link to="/stats">Stats</router-link>
+    </span>
     <span>
       <span>Log-In</span>
       <span>Sign-Up</span>
@@ -34,5 +38,16 @@ span {
 }
 h2 {
   padding-left: 15px;
+}
+.links > *, .links > *:visited{
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.links > *:hover {
+  color: gainsboro;
 }
 </style>

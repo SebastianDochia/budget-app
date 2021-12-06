@@ -21,7 +21,7 @@
           id="category"
           :options="arrayOfCategories"
           :selected="object"
-          :updateOption="methodToRunOnSelect"
+          @updateOption="methodToRunOnSelect"
         ></dropdown>
       </div>
       <button>Submit</button>
@@ -49,7 +49,7 @@ export default {
         alert("All fields are required.");
         return;
       }
-      if (Number.isInteger(this.value)) {
+      if (isNaN(this.value)) {
         alert("Value should be a number.");
         return;
       }
