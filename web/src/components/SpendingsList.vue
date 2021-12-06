@@ -45,7 +45,6 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-right: 80px;
-
   font-weight: 900;
 }
 .table-header p {

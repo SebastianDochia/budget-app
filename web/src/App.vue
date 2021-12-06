@@ -19,7 +19,7 @@ export default {
 <style>
 .container {
   box-sizing: border-box;
-  max-width: 60vw;
+  width: 32vw;
   height: 80vh;
   margin: auto;
   margin-top: 40px;
@@ -27,6 +27,7 @@ export default {
   background-color: white;
   border-radius: 10px;
   padding: 10px;
+  overflow: auto;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -35,5 +36,22 @@ export default {
 }
 body {
   margin: unset;
+}
+@media only screen and (max-width: 2000px){
+  .container {
+    width: 50vw;
+  }
+}
+@media only screen and (max-width: 1300px){
+  .container {
+    width: 70vw;
+  }
+}
+@media only screen and (max-width: 900px){
+  .container {
+    width: 99vw;
+    filter: unset;
+    margin-left: 0;
+  }
 }
 </style>

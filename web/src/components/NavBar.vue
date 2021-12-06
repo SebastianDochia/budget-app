@@ -39,7 +39,7 @@ span {
 h2 {
   padding-left: 15px;
 }
-.links > *, .links > *:visited{
+.links > *, .links > *:visited {
   color: white;
   padding: 10px 30px;
   text-decoration: none;
@@ -49,5 +49,12 @@ h2 {
 }
 .links > *:hover {
   color: gainsboro;
+}
+@media only screen and (max-width: 560px) {
+  .links > *, .links > *:visited {
+  padding: 5px 10px;
+  font-weight: 400;
+  font-size: 1rem;
+}
 }
 </style>

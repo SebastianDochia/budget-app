@@ -115,4 +115,13 @@ export default {
   width: 100%;
   margin: 20px;
 }
+@media only screen and (max-width: 640px) {
+  .top-line {
+    flex-direction: column;
+  }
+  .top-line > * {
+    width: 100%;
+    margin: 10px;
+  }
+}
 </style>
