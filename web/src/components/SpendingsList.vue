@@ -44,8 +44,12 @@ export default {
 .table-header {
   display: flex;
   justify-content: space-between;
-  margin-right: 100px;
-  margin-left: 40px;
+  margin-right: 80px;
+
   font-weight: 900;
+}
+.table-header p {
+  width: 25%;
+  text-align: center;
 }
 </style>

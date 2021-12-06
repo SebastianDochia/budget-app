@@ -32,9 +32,13 @@ export default {
   width: 100%;
   justify-content: space-between;
 }
+.entry-line p {
+  width: 25%;
+  text-overflow: ellipsis;
+}
 .entry-line .red-x {
   color: red;
   cursor: pointer;
-  padding-right: 20px;
+  width: 5%;
 }
 </style>
