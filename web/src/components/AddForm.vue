@@ -21,7 +21,7 @@
           id="category"
           :options="arrayOfCategories"
           :selected="object"
-          @updateOption="methodToRunOnSelect"
+          @updateOption="onSelect"
         ></dropdown>
       </div>
       <button>Submit</button>
@@ -38,7 +38,7 @@ export default {
     dropdown: dropdown,
   },
   methods: {
-    methodToRunOnSelect(payload) {
+    onSelect(payload) {
       this.object = payload;
     },
     onAddCategory() {

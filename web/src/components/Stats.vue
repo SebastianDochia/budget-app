@@ -12,7 +12,7 @@
       <dropdown
         :options="categories"
         :selected="object"
-        @updateOption="methodToRunOnSelect"
+        @updateOption="onSelect"
       ></dropdown>
       <p>Total Spent: ${{ categoryTotalSpent }}</p>
       <p>Transactions Count: {{ categoryExpenses.length }}</p>
@@ -96,7 +96,7 @@ export default {
         Math.round((total / this.expenses.length + Number.EPSILON) * 100) / 100;
       this.categoryTotalSpent = total;
     },
-    methodToRunOnSelect(payload) {
+    onSelect(payload) {
       this.object = payload;
       this.selectedCategory = this.object.name;
 

@@ -9,7 +9,7 @@ const seedDB = () => {
                 body: {
                     name: faker.commerce.productName(),
                     value: faker.datatype.number().toString(),
-                    date: faker.date.past().toLocaleDateString().replace(/\//g, '-'),
+                    date: faker.date.past().toLocaleDateString('en-CA'),
                     category: 'Fakes'
                 }
             })

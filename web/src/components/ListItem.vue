@@ -1,9 +1,9 @@
 <template>
   <div class="entry-line">
     <p>{{ "$" + this.value }}</p>
-    <p>{{ this.name }}</p>
+    <p class="name">{{ this.name }}</p>
     <p>{{ this.date }}</p>
-    <p>{{ this.category }}</p>
+    <p class="category">{{ this.category }}</p>
     <p class="red-x" @click="onDelete(id)">X</p>
   </div>
 </template>
@@ -31,10 +31,21 @@ export default {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  height: 40px;
+  align-items: center;
 }
 .entry-line p {
   width: 25%;
   text-overflow: ellipsis;
+}
+.entry-line p:first-of-type {
+  width: 17%;
+}
+p.name {
+  width: 35%;
+}
+p.category {
+  width: 20%;
 }
 .entry-line .red-x {
   color: red;
