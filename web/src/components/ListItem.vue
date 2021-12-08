@@ -52,4 +52,14 @@ p.category {
   cursor: pointer;
   width: 5%;
 }
+@media only screen and (max-width: 440px) {
+  .entry-line {
+    height: 70px;
+    border-style: solid;
+    border-width: 1px;
+  }
+  p.name {
+    padding-left: 10px;
+  }
+}
 </style>

@@ -65,7 +65,6 @@ export default {
       this.name = "";
       this.value = "";
       this.date = "";
-      this.object.name = "Category";
     },
   },
   data() {

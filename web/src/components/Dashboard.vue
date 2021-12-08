@@ -52,7 +52,6 @@ export default {
       });
     },
     addingCategory() {
-      console.log("BOSS");
       this.isAddingCategory = true;
     },
     addCategory(category) {
